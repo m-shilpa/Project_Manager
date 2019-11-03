@@ -3,7 +3,7 @@ from django.db import models
 class Student(models.Model):    
     usn = models.CharField(max_length=100)
     sname = models.CharField(max_length=100,null=True)
-    sem = models.CharField(max_length=100,null=True)
+    sem = models.IntegerField(null=True)
     department = models.CharField(max_length=100,null=True)
 
     def __str__(self):
@@ -27,10 +27,11 @@ class Project(models.Model):
     teacher_id = models.ForeignKey(Teacher,on_delete=models.SET_NULL,null=True)
     pname = models.CharField(max_length = 100)
     domain = models.CharField(max_length = 100,null=True)
-    summary = models.TextField(null=True)
-    subject = models.CharField(max_length = 100)
+    summary = models.TextField(null=True, blank=False)
+    subject = models.CharField(max_length = 100, blank=False)
     # pfile = models.FileField() 
-
+    sem = models.IntegerField(null=True)
+    project_pic= models.ImageField(upload_to='home/images', default='home/images/dummyimage.PNG', blank=False)
     types = (
         ('Sy','synopis'),
         ('Re','report')
@@ -45,8 +46,8 @@ class Project(models.Model):
     )
     status = models.CharField(max_length=5,choices=status,default='U')
     
-    comment = models.TextField(null=True)
-    likes = models.IntegerField(null=True)
+    comment = models.TextField(null=True, blank=False)
+    likes = models.IntegerField(null=True, blank=False)
 
     best_project = (
         ('Y','Yes'),
@@ -57,4 +58,4 @@ class Project(models.Model):
     def __str__(self):
             return self.pname
    
-
+    
