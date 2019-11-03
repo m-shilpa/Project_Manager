@@ -49,10 +49,10 @@ class Project(models.Model):
     likes = models.IntegerField(null=True)
 
     best_project = (
-        ('1','Yes'),
-        ('0','No')
+        ('Y','Yes'),
+        ('N','No')
     )
-    best_project = models.IntegerField(choices=best_project,default=0)
+    best_project = models.CharField(max_length=5,choices=best_project,default='N')
 
     def __str__(self):
             return self.pname
