@@ -1,0 +1,74 @@
+{%extends 'base.html'%}
+
+  {%block content%}
+      <form action = "/update/{{project.id}}/" method = "POST" enctype="multipart/form-data">
+        {%csrf_token%}
+
+       <div class = "row">  
+            <div class = 'col-sm'>
+              <h3><b>Project Report/Synopsis Updation and Submission Form</b></h3>
+              
+            </div>
+            
+        </div>
+
+        <div class="form-group">
+         
+          <input type="text" class="form-control" name="usn" placeholder="USN" disabled value = {{project.student_id.usn}} >
+        </div>
+        <div class="form-group">
+       
+          <input type="text" class="form-control" name="pname" placeholder="project Name"  value = {{project.pname}} >
+        </div>
+        
+        <div class="form-group">
+        
+          <input type="text" class="form-control" name="domain"  placeholder="domain if any" value = {{project.domain}} >
+        </div>
+        <div class="form-group">
+        
+                <input type="text" class="form-control" name="subject"  placeholder="Subject Name" value = {{project.subject}} >
+        </div>
+        <div class="form-group">
+                <label>Add Image(optional)</label>
+                <input  type="file" name="project_pic">
+        </div>
+        <div class="form-group" >
+                <label>Add Report/SynopsisFile</label>
+                <input  type="file" name="pfile" >
+        </div>
+        <div class="form-group">
+       
+                <label for="exampleFormControlTextarea1">Summary</label>
+                <textarea name ='summary' class="form-control rounded-0" id="exampleFormControlTextarea1"   rows="5">{{project.summary}}</textarea>
+        </div>
+       
+        <div class="form-group">
+        
+         
+          
+            <select class="form-control" name = "types" value = {{project.types}}>
+              <option  disabled>Select type of report</option> 
+              <option value = 'Sy' >Synopsis</option>
+              <option value = "Re">Report</option>
+             
+            </select>
+        
+        </div>
+
+        
+        
+
+        <div class = "row">
+          <div class = 'col-sm'></div>
+          <div class = 'col-sm'>
+            <button type="submit" class="btn btn-primary">Submit</button><br><br>
+            
+          </div>
+          <div class = 'col-sm'></div>
+          
+       
+        </div>
+      
+    </form>
+  {%endblock%}
