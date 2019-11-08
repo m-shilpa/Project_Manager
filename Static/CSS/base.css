@@ -1,0 +1,29 @@
+body{
+
+	background-size: cover;
+	height = 100%;
+
+	
+	font-family: 'Nanum Gothic', sans-serif;
+	background: linear-gradient(23deg, rgba(234,237,244,1) 0%, rgba(247,236,246,1) 100%);
+
+
+
+
+}
+
+
+.cardedit{
+	padding:10px;
+}
+
+.clubbg{
+	 height: 50%;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.club-color>label {
+	color : blue;
+}
