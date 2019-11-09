@@ -3,6 +3,9 @@
 
 
   {%block content%}
+  <div class="card" style="margin-top:70px;">
+    <div class="card-body">
+						<div class = "cardedit">
       <form action = "/studentsignin/" , method = "POST">
       {%csrf_token%}
         <div class = "row">
@@ -46,4 +49,8 @@
         
 
     </form>
+  </div>
+  </div>
+  </div>
+  
   {%endblock%}

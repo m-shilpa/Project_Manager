@@ -4,7 +4,7 @@
   <div class="card" style="margin-top:70px;">
       <div class="card-body">
               <div class = "cardedit">
-      <form action = "/studentsignup/" method = "POST">
+      <form action = "/teachersignup/" method = "POST">
         {%csrf_token%}
         
        <div class = "row">
@@ -18,12 +18,9 @@
 
         <div class="form-group">
          
-          <input type="text" class="form-control" name="username" placeholder="Full name" required>
+          <input type="text" class="form-control" name="tname" placeholder="Full name" required>
         </div>
-        <div class="form-group">
-       
-          <input type="text" class="form-control" name="usn" placeholder="USN" required>
-        </div>
+        
         
         <div class="form-group">
         
@@ -35,13 +32,17 @@
         </div>
         <div class="form-group">
         
-          <input type="text" class="form-control" name = 'sem' aria-describedby="emailHelp" placeholder="Sem" required>
+          <input type="text" class="form-control" name = 'domain' aria-describedby="emailHelp" placeholder="Domain" >
         </div>
+        <div class="form-group">
+        
+                <input type="number" class="form-control" name = 'yearsofexperience' aria-describedby="emailHelp" placeholder="Year Of experience" >
+              </div>
         <div class="form-group">
         
          
           
-            <select class="form-control" name = "dpt" required>
+            <select class="form-control" name = "dept" required>
               <option selected="selected" disabled>Select Branch</option>
               <option value = "CS">CSE</option>
               <option value = "IS">ISE</option>
@@ -54,6 +55,20 @@
             </select>
         
         </div>
+        <div class="form-group">
+        
+         
+          
+                <select class="form-control" name = "position" required>
+                  <option selected="selected" disabled>Select your position</option>
+                  <option value = "Ass">Assistant Professor</option>
+                  <option value = "Asc">Associate Professor</option>
+                  <option value = "Prof">Professor</option>
+                  <option value = "Hod">Hod</option>
+                </select>
+            
+        </div>
+    
 
         <div class = "row">
           <div class = 'col-sm'></div>
@@ -63,7 +78,7 @@
           </div>
           <div class = 'col-sm'></div>
         </div>
-        Already a user? <a href="{% url 'studentsignin' %}">SignIn</a>
+        Already a user? <a href="{% url 'teachersignin' %}">SignIn</a>
     </form>
   </div>
 </div>
