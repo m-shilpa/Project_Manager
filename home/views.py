@@ -115,5 +115,34 @@ def mysubmission(request):
 	project = Project.objects.filter(student_id = Student.objects.get(user = name))
 	print(project)
 	return render(request,'mysubmission.html',{'projects':project})
+
+
 def home(request):
 	return HttpResponse('Hi')
+
+
+
+
+	
+
+
+def teachersignup(request):
+	if request.method == 'POST':
+		tname = request.POST.get('tname',None)
+		email = request.POST.get('email',None)
+		dept = request.POST.get('dept',None)
+		domain = request.POST.get('domain',None)
+		yearsofexperience = request.POST.get('yearsofexperience',None)
+		position = request.POST.get('position',None)
+		password = request.POST.get('password',None)
+		if User.objects.filter(email=email).exists():
+			return HttpResponse('User already exists')
+		else:
+			user = User.objects.create_user(username=email,email = email, password = password)
+			user.save()
+			teacher = Teacher(user = user, tname = tname, dept = dept, domain = domain, yearsofexperience = yearsofexperience, position = position)
+			teacher.save()
+			login(request, user)
+			return redirect("/")
+	return render(request, 'teachersignup.html')
+	
