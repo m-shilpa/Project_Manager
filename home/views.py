@@ -3,9 +3,14 @@ from django.contrib.auth import authenticate, login ,logout
 from datetime import date
 from django.shortcuts import render, HttpResponse, redirect, render_to_response 
 
+
+
+
 def signout(request):
 	logout(request)
 	return redirect("/")
+
+# ----------------------------------------Student Login-----------------------------------
 
 def studentsignin(request):
 	correct = 1
@@ -29,7 +34,7 @@ def studentsignup(request):
 		name = request.POST.get('username',None)
 		email = request.POST.get('email', None)
 		password = request.POST.get('password', None)
-		usn = request.POST.get('usn',None)
+		usn = request.POST.get('usn',None).upper()
 		sem = request.POST.get('sem',None)
 		dpt = request.POST.get('dpt', None)
 
@@ -46,5 +51,69 @@ def studentsignup(request):
 		
 	return render(request, "studentsignup.html")
 
+
+
+# ----------------------------------------Student Report Sumbmission-------------------------------------------------
+
+def submit(request):
+	if request.method == 'POST':
+		usn = request.POST.get('usn',None).upper()
+		teacher_id = request.POST.get('teacher', None)
+		pname = request.POST.get('pname', None)
+		domain = request.POST.get('domain', None)
+		summary = request.POST.get('summary', None)
+		subject = request.POST.get('subject', None)
+		pfile = request.FILES.get('pfile', None)
+		project_pic = request.FILES.get('project_pic',None)
+		types = request.POST.get('types', None)
+		
+		print(pfile,project_pic)
+		try:
+			student = Student.objects.get(usn = usn)
+			branch = student.department
+			sem = student.sem
+
+		
+		except:
+			return HttpResponse('Student doesnot exists')
+
+
+		
+		project = Project(student_id = student,pname=pname,domain = domain,summary = summary,subject = subject,branch = branch,pfile = pfile,sem = sem,project_pic = project_pic, types = types )
+		project.save()
+		
+
+	teachers = Teacher.objects.all()
+	return render(request, "submit.html", {'teachers':teachers})
+
+def update(request,project_id):
+	project = Project.objects.get(pk = project_id)
+	teachers = Teacher.objects.all()
+	if request.method == 'POST':
+		
+		
+		project.pname = request.POST.get('pname', None)
+		project.domain = request.POST.get('domain', None)
+		project.summary = request.POST.get('summary', None)
+		project.subject = request.POST.get('subject', None)
+		pfile = request.FILES.get('pfile', None)
+		if pfile is not None:
+			project.pfile = pfile
+		pic = request.FILES.get('project_pic',None)
+		if project is not None:
+			project.projet_pic = pic
+
+		project.types = request.POST.get('types', None)	
+		project.save()
+
+	
+	
+	return render(request,"update.html",{'project': project, 'teachers':teachers })
+
+def mysubmission(request):
+	name = request.user
+	project = Project.objects.filter(student_id = Student.objects.get(user = name))
+	print(project)
+	return render(request,'mysubmission.html',{'projects':project})
 def home(request):
 	return HttpResponse('Hi')

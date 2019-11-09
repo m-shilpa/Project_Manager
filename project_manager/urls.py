@@ -25,4 +25,7 @@ urlpatterns = [
     path('studentsignup/', studentsignup, name = 'studentsignup'),
     path('logout/', signout, name = 'logout'),
     path('', home, name = 'home'),
-]
+    path('submit/', submit , name = 'submit'),
+    path('update/<int:project_id>/',update, name = 'update'),
+    path('mysubmissions/',mysubmission,name = 'mysubmission')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

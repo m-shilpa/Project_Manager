@@ -27,6 +27,7 @@ class Teacher(models.Model):
 
 class Project(models.Model):
     student_id = models.ForeignKey(Student,on_delete=models.CASCADE,null=True)
+    date =models.DateField(null = True)
     teacher_id = models.ForeignKey(Teacher,on_delete=models.SET_NULL,null=True)
     pname = models.CharField(max_length = 100)
     domain = models.CharField(max_length = 100,null=True)
@@ -68,6 +69,7 @@ class Project(models.Model):
         ('N','No')
     )
     best_project = models.CharField(max_length=5,choices=best_project,default='N')
+    tcomment = models.TextField(null = True)
 
 
     def __str__(self):
