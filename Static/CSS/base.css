@@ -27,3 +27,7 @@ body{
 .club-color>label {
 	color : blue;
 }
+.sub-image{
+	width:100%;
+	height:100%;
+}

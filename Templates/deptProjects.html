@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{%block main%}
+<h1>Projects of the {{projects.0.branch}} Department</h1>
+{{projects}}
+<form method = "POST">{%csrf_token%}
+  <p>Domain</p>
+{%for domain in domains%}
+<input type="radio" name="domain">{{domain.domain}}<br/>
+
+{%endfor%}
+<p>Subject</p>
+{%for subject in subjects%}
+<input type="radio" name="subject">{{subject.subject}}<br/>
+
+{%endfor%}
+<p>Sem</p>
+{%for sem in sems%}
+<input type="radio" name="sem">{{sem.sem}}<br/>
+
+{%endfor%}
+<button type="submit" class="btn btn-primary" style="margin-top:20px;">Submit</button><br><br>
+</form>
+
+<div class="row">
+    {%for project in projects%}
+    <a href="/projects/{{project.id}}">
+            
+            <div class="col-sm-6">
+            <div class="card" style="width: 15rem;">
+            <div class="card-body">
+                    <img style ="width:12rem;height:12rem;" class = 'sub-image' src = {{project.project_pic.url}} src = ""> 
+              <p class="card-title">{{project.pname}}</p>
+              <p class="card-text">{{project.domain}}</p>
+            </div>
+          </div></div></a>
+{%endfor%}</div>
+
+{%endblock%}

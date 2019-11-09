@@ -25,9 +25,12 @@ urlpatterns = [
     path('studentsignin/', studentsignin, name = 'studentsignin'),
     path('studentsignup/', studentsignup, name = 'studentsignup'),
     path('logout/', signout, name = 'logout'),
-    path('', home, name = 'home'),
-    
+    path('', home, name = 'home'), 
     path('teacherlist/',teacherlist,name="teacherlist"),
-    # path('teacherview/',teacherview,name="teacherview",{pid:id}),
-    url(r'^teacherview/(?P<pid>[0-9]+)$',teacherview,name='teacherview')
-]
+    path('teacherview/<int:pid>/',teacherview,name='teacherview'),
+    path('submit/', submit , name = 'submit'),
+    path('update/<int:project_id>/',update, name = 'update'),
+    path('mysubmissions/',mysubmission,name = 'mysubmission'),
+    path('branch/<str:dept>',deptProjects,name="department-projects"),
+    path('projects/<int:pid>',project,name="project"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

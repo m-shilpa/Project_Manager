@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+{%block main%}
+
+{% for b, branch in branches.items %}
+<a href="/branch/{{b}}"><div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../home/images/dummyimage.PNG" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">{{branch}}</p>
+        </div>
+      </div></a>
+      {%endfor%}
+      {%endblock%}
