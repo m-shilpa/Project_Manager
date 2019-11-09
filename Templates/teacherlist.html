@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{%block main%}
+    
+
+    <h1 style = "text-align: center;">List of projects</h1>
+    <table class="table table-hover" style = "background :white;">
+            <thead class="thead-dark">
+              <tr >
+                <th scope="col">Student Name</th>
+                <th scope="col">Sem</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Status</th>
+                <th scope="col">File</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for project in projects %}
+           
+              <tr  style = "cursor: pointer;"class="table-row" data-href="/teacherview/{{project.id}}">
+                
+                <th scope="row">{{project.student_id.sname}}</th>
+                <td>{{project.sem}}</td>
+                <td>{{project.subject}}</td>
+                <td>{{project.get_status_display}}</td>
+                <td><a href = {{project.pfile.url}} target = "_blank">Click to open</a></td>
+              
+              </tr>
+            
+            {%endfor%}
+              
+            </tbody>
+          </table>
+          
+
+    
+         
+{%endblock%}
+{%block script%}
+
+    $(document).ready(function($) {
+  $(".table-row").click(function() {
+  window.document.location = $(this).data("href");
+  });
+  });
+
+{%endblock%}

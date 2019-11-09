@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
 from home.views import *
 from django.conf.urls.static import static
 from django.conf import settings
@@ -29,5 +30,10 @@ urlpatterns = [
     path('', home, name = 'home'),
     path('submit/', submit , name = 'submit'),
     path('update/<int:project_id>/',update, name = 'update'),
-    path('mysubmissions/',mysubmission,name = 'mysubmission')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('mysubmissions/',mysubmission,name = 'mysubmission'),
+
+    
+    path('teacherlist/',teacherlist,name="teacherlist"),
+    # path('teacherview/',teacherview,name="teacherview",{pid:id}),
+    url(r'^teacherview/(?P<pid>[0-9]+)$',teacherview,name='teacherview')
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

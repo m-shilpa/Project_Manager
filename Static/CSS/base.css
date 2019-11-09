@@ -12,6 +12,9 @@ body{
 
 }
 
+.radio{
+	transform: scale(2);
+}
 
 .cardedit{
 	padding:10px;
