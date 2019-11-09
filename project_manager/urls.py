@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('studentsignin/', studentsignin, name = 'studentsignin'),
     path('studentsignup/', studentsignup, name = 'studentsignup'),
+    path('teachersignin/', studentsignin,name = 'teachersignin'),
+    path('teachersignup/', teachersignup, name = 'teachersignup'),
     path('logout/', signout, name = 'logout'),
     path('', home, name = 'home'), 
     path('teacherlist/',teacherlist,name="teacherlist"),

@@ -1,18 +1,68 @@
 {%extends 'base.html'%}
-{%block main%}
+{%block content%}
+
+<div class="card">
+        <div class="card-body" >
+    <div class = "cardedit">
+   
+
 <form method = "POST" enctype="multipart/form-data">
     {%csrf_token%}
-    <div class="containers"><div>
-        <h1>Project Details</h1>
-    Accept<input type="radio" name ="status" value="A"/>
-    Reject<input type="radio" name ="status" value="R"/>
-    To be modified<input type="radio" name ="status" value="M"/>
-    <p class="sid">USN:{{project.student_id.sname}}</p>
-    <p>Project Name:{{project.pname}}</p>
-    <p>Sem:{{project.sem}}</p>
-    <p>Subject:{{project.subject}}</p>
-    <p>Comment<textarea name="comment">Enter your comments</textarea></p>
+        <h1 style = "text-align: center;">Project Details</h1>
+       
+        <div class="form-check form-check-inline">
+                <input class="form-check-input radio" type="radio" name="status" id="inlineRadio1" style="transform: scale(1.5);" value="A">
+                <label class="form-check-label" for="inlineRadio1">Accept</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input radio" type="radio" name="status" id="inlineRadio2" style="transform: scale(1.5);" value="R">
+                <label class="form-check-label" for="inlineRadio2">Reject</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input radio" type="radio" name="status" id="inlineRadio3" style="transform: scale(1.5);"s value="M" >
+                <label class="form-check-label" for="inlineRadio3"> To be Modified</label>
+        </div>
+        <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-3 col-form-label ol-form-label-lg"><strong>USN</strong></label>
+                <div class="col-sm-9">
+                        {{project.student_id.usn}} 
+                </div>
+        </div>
+        <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-3 col-form-label ol-form-label-lg"><strong> ProjectName</strong> </label>
+                <div class="col-sm-9">
+                        {{project.pname}}
+                </div>
+        </div>
+        <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-3 col-form-label ol-form-label-lg"><strong>Sem</strong></label>
+                <div class="col-sm-9">
+                        {{project.sem}}
+                </div>
+        </div>
+        <div class="form-group row">
+                        <label for="colFormLabelSm" class="col-sm-3 col-form-label ol-form-label-lg"><strong>Subject</strong></label>
+                        <div class="col-sm-9">
+                                        {{project.subject}}
+                        </div>
+                </div>
+        <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-3 col-form-label ol-form-label-lg"><strong>{{project.get_types_display}}</strong></label>
+                <div class="col-sm-9">
+                                <a href = {{project.pfile.url}} target = "_blank">Click to open</a>
+                </div>
+        </div>
+    
+    <div class="form-group">
+            <label for="exampleFormControlTextarea2"><strong>Comments</strong></label>
+            <textarea name="comment" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+    </div>
+   
     <button type="submit" class="btn btn-primary">Submit</button></div>
 </div>
 </form>
+</div>
+</div>
+
+</div>
 {%endblock%}

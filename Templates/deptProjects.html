@@ -1,19 +1,19 @@
 {%extends 'base.html'%}
 {%block main%}
-<h1>Projects of the {{projects.0.branch}} Department</h1>
+<h3><strong>Projects of the {{projects.0.get_branch_display}} Department</strong></h3>
 {{projects}}
 <form method = "POST">{%csrf_token%}
-  <p>Domain</p>
+    <p><strong>Domain</strong></p>
 {%for domain in domains%}
 <input type="radio" name="domain">{{domain.domain}}<br/>
 
 {%endfor%}
-<p>Subject</p>
+<p><strong>Subject</strong></p>
 {%for subject in subjects%}
 <input type="radio" name="subject">{{subject.subject}}<br/>
 
 {%endfor%}
-<p>Sem</p>
+<p><strong>Semester</strong></p>
 {%for sem in sems%}
 <input type="radio" name="sem">{{sem.sem}}<br/>
 

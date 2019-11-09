@@ -1,6 +1,9 @@
 {%extends 'base.html'%}
 
   {%block content%}
+  <div class="card" style="margin-top:70px;">
+      <div class="card-body">
+              <div class = "cardedit">
       <form action = "/update/{{project.id}}/" method = "POST" enctype="multipart/form-data">
         {%csrf_token%}
 
@@ -71,4 +74,7 @@
         </div>
       
     </form>
+    </div>
+    </div>
+    </div>
   {%endblock%}

@@ -120,6 +120,32 @@ def home(request):
 	branches = { i[0]:i[1] for i in Project.Branch}
 	return render(request,'home.html',{'branches':branches})
 
+
+
+
+	
+
+
+def teachersignup(request):
+	if request.method == 'POST':
+		tname = request.POST.get('tname',None)
+		email = request.POST.get('email',None)
+		dept = request.POST.get('dept',None)
+		domain = request.POST.get('domain',None)
+		yearsofexperience = request.POST.get('yearsofexperience',None)
+		position = request.POST.get('position',None)
+		password = request.POST.get('password',None)
+		if User.objects.filter(email=email).exists():
+			return HttpResponse('User already exists')
+		else:
+			user = User.objects.create_user(username=email,email = email, password = password)
+			user.save()
+			teacher = Teacher(user = user, tname = tname, dept = dept, domain = domain, yearsofexperience = yearsofexperience, position = position)
+			teacher.save()
+			login(request, user)
+			return redirect("/")
+	return render(request, 'teachersignup.html')
+	
 def teacherview(request,pid):
 	if request.method == 'POST':
 		sid = request.POST.get('sid')
@@ -132,7 +158,8 @@ def teacherview(request,pid):
 		b.save()
 		return redirect("/teacherlist")
 
-	project = Project.objects.filter(id=pid).values('student_id','teacher_id','pname','domain','summary','subject','branch','pfile','sem','types','status')[0]
+	project = Project.objects.get(pk=pid)
+	print(project)
 	return render(request,"teacherview.html",{'project':project})
 
 def teacherlist(request):
