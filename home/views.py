@@ -48,3 +48,23 @@ def studentsignup(request):
 
 def home(request):
 	return HttpResponse('Hi')
+
+def teacherview(request,pid):
+	if request.method == 'POST':
+		sid = request.POST.get('sid')
+		status = request.POST.get('status','U')
+		comment = request.POST.get('comment',None)
+		a = Project.objects.get(id=pid)
+		a.status = status
+		a.save()
+		b= Comment(student = a.student_id,project = a,comment=comment)
+		b.save()
+		return redirect("/teacherlist")
+
+	project = Project.objects.filter(id=pid).values('student_id','teacher_id','pname','domain','summary','subject','branch','pfile','sem','types','status')[0]
+	return render(request,"teacherview.html",{'project':project})
+
+def teacherlist(request):
+	 
+	projects = Project.objects.exclude(status='A')
+	return render(request,"teacherlist.html",{'projects':projects})

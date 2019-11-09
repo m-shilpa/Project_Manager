@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
 from home.views import *
 from django.conf.urls.static import static
 from django.conf import settings
@@ -25,4 +26,8 @@ urlpatterns = [
     path('studentsignup/', studentsignup, name = 'studentsignup'),
     path('logout/', signout, name = 'logout'),
     path('', home, name = 'home'),
+    
+    path('teacherlist/',teacherlist,name="teacherlist"),
+    # path('teacherview/',teacherview,name="teacherview",{pid:id}),
+    url(r'^teacherview/(?P<pid>[0-9]+)$',teacherview,name='teacherview')
 ]
