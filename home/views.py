@@ -112,7 +112,10 @@ def update(request,project_id):
 
 def mysubmission(request):
 	name = request.user
-	project = Project.objects.filter(student_id = Student.objects.get(user = name))
+	try:
+		project = Project.objects.filter(student_id = Student.objects.get(user = name))
+	except:
+		return HttpResponse('You dont have  any project')
 	print(project)
 	return render(request,'mysubmission.html',{'projects':project})
 

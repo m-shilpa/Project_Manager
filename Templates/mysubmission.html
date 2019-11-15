@@ -18,7 +18,7 @@
                 <a href = {{project.pfile.url}} target="_blank">Document</a>
                 <br/><strong>Comments</strong>
                 <div>{{project.tcomment}}</div>
-                <strong>Status</strong> : <strong style = "color: red">{{project.status}}</strong>
+                <strong>Status</strong> : <strong style = "color: red">{{project.get_status_display}}</strong>
                 <br/><a class = "btn btn-primary" href = '/update/{{project.id}}'>Update</a>
             </div>
             </div>
