@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{%block main%}
+<div class = "container" style = "margin-top:2rem">
+<div class = 'row' style = "justify-content: center; margin-bottom: 1rem;">
+{% for b, branch in branches.items %}
+<a href="/branch/{{b}}">
+ 
+    <div class = "col-md-4">
+      <div class="card" style="width: 18rem;height:18rem;margin:1rem">
+        <img class="card-img-top" src="../home/images/dummyimage.PNG" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">{{branch}}</p>
+          </div>
+      </div>
+    </div>
+  
+</a>
+      {%endfor%}
+      </div>
+    </div>
+      {%endblock%}

@@ -41,9 +41,15 @@
                 </div>
         </div>
         <div class="form-group row">
-                <label for="colFormLabelSm" class="col-sm-3 col-form-label ol-form-label-lg"><strong>Subject</strong></label>
+                        <label for="colFormLabelSm" class="col-sm-3 col-form-label ol-form-label-lg"><strong>Subject</strong></label>
+                        <div class="col-sm-9">
+                                        {{project.subject}}
+                        </div>
+                </div>
+        <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-3 col-form-label ol-form-label-lg"><strong>{{project.get_types_display}}</strong></label>
                 <div class="col-sm-9">
-                        {{project.subject}}
+                                <a href = {{project.pfile.url}} target = "_blank">Click to open</a>
                 </div>
         </div>
     

@@ -29,11 +29,11 @@ class Project(models.Model):
     student_id = models.ForeignKey(Student,on_delete=models.CASCADE,null=True)
     date =models.DateField(null = True)
     teacher_id = models.ForeignKey(Teacher,on_delete=models.SET_NULL,null=True)
-    pname = models.CharField(max_length = 100)
+    pname = models.CharField(max_length = 100,blank=True)
     domain = models.CharField(max_length = 100,null=True)
     summary = models.TextField(null=True, blank=False)
     subject = models.CharField(max_length = 100, blank=False)
-    branch =  (
+    Branch =  (
         ('CS','Computer Science'),
         ('IS','Information Science'),
         ('EC', 'Electronics'),
@@ -43,7 +43,7 @@ class Project(models.Model):
         ('IE', 'ie'),
         ('TC', 'TC')
     )
-    branch = models.CharField(max_length = 50, choices = branch)
+    branch = models.CharField(max_length = 50, choices = Branch)
     pfile = models.FileField(upload_to='home/pfiles', max_length=1000, null = True)
     sem = models.IntegerField(null=True)
     project_pic= models.ImageField(upload_to='home/images', default='home/images/dummyimage.PNG', blank=False)

@@ -1,0 +1,68 @@
+{%extends 'base.html'%}
+{%block main%}
+<h3 style = "text-align:center; margin-bottom: 2rem;"><strong>Projects of the {{projects.0.get_branch_display}} Department</strong></h3>
+
+<div class = "row">
+<div class = "col-md-4" style = "top:10%; height: 100%;back:red">
+  <form method = "POST">{%csrf_token%}
+      <div class="btn-group">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Domain
+          </button>
+          <div class="dropdown-menu">
+              {%for domain in domains%}
+              
+              <input type="radio" name="domain" value ={{domain.domain}} >{{domain.domain}}<br/>
+              
+              {%endfor%}
+            
+          </div>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Subject
+            </button>
+            <div class="dropdown-menu">
+                {%for subject in subjects%}
+                <input type="radio" name="subject" value = {{subject.subject}}>{{subject.subject}}<br/>
+                
+                {%endfor%}
+              
+            </div>
+          </div>
+          <div class="btn-group">
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sem
+              </button>
+              <div class="dropdown-menu">
+                  {%for sem in sems%}
+                  <input type="radio" name="sem" value ={{sem.sem}} >{{sem.sem}}<br/>
+                  
+                  {%endfor%}
+              </div>
+            </div>
+ 
+
+<button type="submit" class="btn btn-primary" style="margin-top:20px;">Submit</button><br><br>
+</form>
+</div>
+
+
+<div class = "col-md-8">
+<div class="row">
+    {%for project in projects%}
+    <a href="/projects/{{project.id}}">
+            
+            <div class="col-sm-6">
+            <div class="card" style="width: 15rem;">
+            <div class="card-body">
+                    <img style ="width:12rem;height:12rem;" class = 'sub-image' src = {{project.project_pic.url}} src = ""> 
+              <p class="card-title">{{project.pname}}</p>
+              <p class="card-text">{{project.domain}}</p>
+            </div>
+          </div></div></a>
+{%endfor%}</div>
+</div>
+</div>
+
+{%endblock%}

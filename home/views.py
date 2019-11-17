@@ -119,9 +119,9 @@ def mysubmission(request):
 	print(project)
 	return render(request,'mysubmission.html',{'projects':project})
 
-
 def home(request):
-	return HttpResponse('Hi')
+	branches = { i[0]:i[1] for i in Project.Branch}
+	return render(request,'home.html',{'branches':branches})
 
 
 
@@ -166,6 +166,41 @@ def teacherview(request,pid):
 	return render(request,"teacherview.html",{'project':project})
 
 def teacherlist(request):
-	 
-	projects = Project.objects.exclude(status='A')
+	projects = Project.objects.filter(teacher_id =1 , status='U')
 	return render(request,"teacherlist.html",{'projects':projects})
+
+def teacherlist1(request):
+	teacher = Teacher.objects.all()
+	if request.user not in teacher:
+		return HttpResponse("You do not have access to this page")
+	else:
+		teacher = request.user
+		projects = Project.objects.filter(teacher_id =Teacher.objects.get(user = teacher) , status='U')
+		return render(request,"teacherlist.html",{'projects':projects})
+
+def deptProjects(request,dept):
+
+	projects = Project.objects.filter(branch=dept,types = "Re") #Type = report,status = accepted, branch
+	domain = projects.values('domain').distinct() #domain for that department
+	sem = projects.values('sem').distinct() # sem for that department
+	subject = projects.values('subject').distinct() #subjects for that department
+
+	if request.method =='POST':
+		domain1 = request.POST.get('domain',None)
+		subject1 = request.POST.get('subject',None)
+		sem1 = request.POST.get('sem',None)
+		if domain1!=None:
+			projects = projects.filter(domain = domain1)
+		if subject1!=None:
+			projects = projects.filter(subject = subject1)
+		if sem1!=None:
+			projects = projects.filter(sem = sem1)
+			print(projects,domain1)
+			return render(request,'deptProjects.html',{'projects':projects,'domains':domain,'sems':sem,'subjects':subject})
+		 
+
+	
+	return render(request,'deptProjects.html',{'projects':projects,'domains':domain,'sems':sem,'subjects':subject})
+
+def project(request,pid):
+	return HttpResponse("hi")
