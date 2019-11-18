@@ -13,28 +13,42 @@
 		</script>
 
 	</head>
-	<body>
-		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+	<body style = "background: #FFFCFE;
+	background: -webkit-linear-gradient(left, #FFFCFE, #CEDAEF);
+	background: -moz-linear-gradient(left, #FFFCFE, #CEDAEF);
+	background: linear-gradient(to right, #FFFCFE, #CEDAEF);">
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="background: #19191B;
+		background: -webkit-linear-gradient(left, #19191B, #2065D2);
+		background: -moz-linear-gradient(left, #19191B, #2065D2);
+		background: linear-gradient(to right, #19191B, #2065D2);">
 			<!-- Brand -->
 			<a class="navbar-brand" href="/">Project Manager</a>
-		  
 			<!-- Toggler/collapsibe Button -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			  <span class="navbar-toggler-icon"></span>
 			</button>
+
 		  
 			<!-- Navbar links -->
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			  <ul class="navbar-nav">
-				<li class="nav-item">
-				  <a class="nav-link" href="/mysubmissions">My submissions</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="/submit">Submit Report/Synopsis</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#"></a>
-				</li>
+					{% if not user.is_authenticated %}
+					<li class="nav-item">
+							<a class="nav-link" href="/studentsignup">Sign Up</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link" href="/studentsignin">Sign In</a>
+					</li>
+					{%endif%}
+					{% if user.is_authenticated %}
+					<li class="nav-item">
+							<a class="nav-link" href="/logout">Logout</a>
+							
+					</li>
+					{%endif%}
+					{%block nav%}{%endblock nav%}
+
+				
 			  </ul>
 			</div>
 		  </nav>
