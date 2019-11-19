@@ -127,6 +127,22 @@ def home(request):
 
 
 	
+def teachersignin(request):
+	correct = 1
+	if request.method == 'POST':
+		user = request.POST.get('user')
+		password = request.POST.get('password')
+		
+		user = authenticate(request, username=user, password=password)
+		if user is not None:
+			print(user)
+			login(request, user)
+			return redirect("/teacherlist")
+		else:
+			correct = 0
+			return render(request, 'teachersignin.html',{'correct' : correct})
+
+	return render(request, 'teachersignin.html', {'correct' : correct})
 
 
 def teachersignup(request):
@@ -166,17 +182,25 @@ def teacherview(request,pid):
 	return render(request,"teacherview.html",{'project':project})
 
 def teacherlist(request):
-	projects = Project.objects.filter(teacher_id =1 , status='U')
-	return render(request,"teacherlist.html",{'projects':projects})
-
-def teacherlist1(request):
-	teacher = Teacher.objects.all()
-	if request.user not in teacher:
-		return HttpResponse("You do not have access to this page")
-	else:
-		teacher = request.user
-		projects = Project.objects.filter(teacher_id =Teacher.objects.get(user = teacher) , status='U')
+	
+	
+	try:
+		teacher = Teacher.objects.get(user = request.user)
+		projects = Project.objects.filter(teacher_id =teacher , status='U')
 		return render(request,"teacherlist.html",{'projects':projects})
+	except:
+		return HttpResponse("You do not have access to this page")
+	
+	
+
+# def teacherlist1(request):
+# 	teacher = Teacher.objects.all()
+# 	if request.user not in teacher:
+# 		return HttpResponse("You do not have access to this page")
+# 	else:
+# 		teacher = request.user
+# 		projects = Project.objects.filter(teacher_id =Teacher.objects.get(user = teacher) , status='U')
+# 		return render(request,"teacherlist.html",{'projects':projects})
 
 def deptProjects(request,dept):
 

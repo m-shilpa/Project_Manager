@@ -1,15 +1,31 @@
 {%extends 'base.html'%}
+{% load static %}
+
+{%block nav%}
+<li class="nav-item">
+    <a class="nav-link" href="/mysubmissions">My submissions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/submit">Submit Report/Synopsis</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/teachersignin">Teacher Login</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" href="/teachersignup">Teacher SignUp</a>
+    </li>
+{%endblock nav%}
 {%block main%}
 <div class = "container" style = "margin-top:2rem">
 <div class = 'row' style = "justify-content: center; margin-bottom: 1rem;">
 {% for b, branch in branches.items %}
-<a href="/branch/{{b}}">
+<a href="/branch/{{b}}" style=" color:black;text-decoration:none">
  
     <div class = "col-md-4">
       <div class="card" style="width: 18rem;height:18rem;margin:1rem">
-        <img class="card-img-top" src="../home/images/dummyimage.PNG" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">{{branch}}</p>
+        <img class="card-img-top" src='media/dept-images/{{b}}.jpg' alt="Card image cap" style = "height:70%">
+          <div class="card-body" style = "border-top:1px solid black">
+            <p class="card-text" ><h4>{{branch}}</h4></p>
           </div>
       </div>
     </div>

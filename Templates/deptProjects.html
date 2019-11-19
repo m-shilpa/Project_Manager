@@ -1,4 +1,15 @@
 {%extends 'base.html'%}
+{%block nav%}
+<li class="nav-item">
+				  <a class="nav-link" href="/mysubmissions">My submissions</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="/submit">Submit Report/Synopsis</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#"></a>
+				</li>
+{%endblock nav%}
 {%block main%}
 <h3 style = "text-align:center; margin-bottom: 2rem;"><strong>Projects of the {{projects.0.get_branch_display}} Department</strong></h3>
 
@@ -57,8 +68,8 @@
             <div class="card" style="width: 15rem;">
             <div class="card-body">
                     <img style ="width:12rem;height:12rem;" class = 'sub-image' src = {{project.project_pic.url}} src = ""> 
-              <p class="card-title">{{project.pname}}</p>
-              <p class="card-text">{{project.domain}}</p>
+              <h4 class="card-title"style="text-align: center;">{{project.pname}}</h4>
+          
             </div>
           </div></div></a>
 {%endfor%}</div>
