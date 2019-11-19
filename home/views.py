@@ -229,4 +229,12 @@ def deptProjects(request,dept):
 def project(request,pid):
 	project = list(Project.objects.filter(id=pid))
 	comment = list(Comment.objects.filter(project=pid))
+	print("user------------------",request.user)
+	if request.method =='POST':
+		user_comment = request.POST.get('comment',None)
+		project1 = Project.objects.get(id=pid)
+		comment = Comment(comment=user_comment,project=project1,user = request.user)
+		comment.save()
+		comment_list = list(Comment.objects.filter(project=pid))
+		return render(request,"project.html",{'project': project[0], 'comments':comment_list})
 	return render(request,"project.html",{'project': project[0], 'comments':comment})

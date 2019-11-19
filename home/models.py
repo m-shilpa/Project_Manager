@@ -76,11 +76,11 @@ class Project(models.Model):
             return self.pname
 
 class Comment(models.Model):
-      student = models.ForeignKey(Student,on_delete=models.CASCADE)
-      project = models.ForeignKey(Project,on_delete=models.CASCADE)
-      comment = models.TextField(null=True)
-      def __str__(self):
-          return self.project.pname
+    user = models.ForeignKey('auth.User',on_delete=models.CASCADE)
+    project = models.ForeignKey(Project,on_delete=models.CASCADE)
+    comment = models.TextField(null=True)
+    def __str__(self):
+        return self.project.pname
       
 
 
