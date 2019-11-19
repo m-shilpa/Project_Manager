@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%block main%}
+  
+    <img src="" alt={{project.pname}} />
+    <h3>{{project.pname}}</h3>
+    <p>{{project.domain}}</p>
+    <p>{{project.summary}}</p>
+    <p>{{project.subject}}</p>
+    <p>{{project.student_id.sname}}</p>
+    <p>{{project.branch}}</p>
+    {% if project.best_project == 'Y' %}
+    <p>This is the best project of the department</p>
+    {% else %}
+    <span></span>
+
+    {%endif%}
+    <!-- {% if project.likes !=null%}
+<p>Likes : {{project.likes}}</p> -->
+<!-- {%endif%} -->
+    <p>Comments</p>
+    {% for comment in comments%}
+    <p>{{comment.comment}}</p>
+    {%endfor%}
+{%endblock%}

@@ -227,4 +227,6 @@ def deptProjects(request,dept):
 	return render(request,'deptProjects.html',{'projects':projects,'domains':domain,'sems':sem,'subjects':subject})
 
 def project(request,pid):
-	return HttpResponse("hi")
+	project = list(Project.objects.filter(id=pid))
+	comment = list(Comment.objects.filter(project=pid))
+	return render(request,"project.html",{'project': project[0], 'comments':comment})
