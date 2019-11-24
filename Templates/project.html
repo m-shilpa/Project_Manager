@@ -25,14 +25,20 @@
     {%endif%}
    
     <strong style =" margin: 1rem 3.5rem;">Comments</strong>
+    <form method='POST'>
+      {%csrf_token%}
+<input  style =" margin: 1rem 3.5rem;" type="text" name="comment" placeholder="Type your comment"/>
+  <input type="submit"/>
+</form>
     {% for comment in comments%}
     <div class="card" style =" margin: 1rem 5%; width:90%;" >
 
-    <div class="card-body">{{comment.comment}}</div>
+    <div class="card-body">{{comment.comment}}{{comment.user.Username}}</div>
     </div>
 
     
 
 
     {%endfor%}
+    <br/><br/>
 {%endblock%}

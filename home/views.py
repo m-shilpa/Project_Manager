@@ -236,7 +236,7 @@ def project(request,pid):
 	if request.method =='POST':
 		user_comment = request.POST.get('comment',None)
 		project1 = Project.objects.get(id=pid)
-		comment = Comment(comment=user_comment,project=project1,student_id = request.user)
+		comment = Comment(comment=user_comment,project=project1,user = request.user)
 		comment.save()
 		comment_list = list(Comment.objects.filter(project=pid))
 		return render(request,"project.html",{'project': project[0], 'comments':comment_list})
