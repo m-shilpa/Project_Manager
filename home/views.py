@@ -174,9 +174,9 @@ def teacherview(request,pid):
 		comment = request.POST.get('comment',None)
 		a = Project.objects.get(id=pid)
 		a.status = status
+		a.comment = comment
 		a.save()
-		b= Comment(student = a.student_id,project = a,comment=comment)
-		b.save()
+	
 		return redirect("/teacherlist")
 
 	project = Project.objects.get(pk=pid)
@@ -215,6 +215,7 @@ def deptProjects(request,dept):
 		domain1 = request.POST.get('domain',None)
 		subject1 = request.POST.get('subject',None)
 		sem1 = request.POST.get('sem',None)
+		print(domain1,subject1,sem1)
 		if domain1!=None:
 			projects = projects.filter(domain = domain1)
 		if subject1!=None:
@@ -231,4 +232,12 @@ def deptProjects(request,dept):
 def project(request,pid):
 	project = list(Project.objects.filter(id=pid))
 	comment = list(Comment.objects.filter(project=pid))
+	print("user------------------",request.user)
+	if request.method =='POST':
+		user_comment = request.POST.get('comment',None)
+		project1 = Project.objects.get(id=pid)
+		comment = Comment(comment=user_comment,project=project1,student_id = request.user)
+		comment.save()
+		comment_list = list(Comment.objects.filter(project=pid))
+		return render(request,"project.html",{'project': project[0], 'comments':comment_list})
 	return render(request,"project.html",{'project': project[0], 'comments':comment})

@@ -13,9 +13,10 @@
 {%block main%}
 <h3 style = "text-align:center; margin-bottom: 2rem;"><strong>Projects of the {{projects.0.get_branch_display}} Department</strong></h3>
 
-<div class = "row">
-<div class = "col-md-4" style = "top:10%; height: 100%;back:red">
+
   <form method = "POST">{%csrf_token%}
+      <div class = "row" style = "justify-content: center;text-align: center;">
+          <div class = "col-sm" style = "top:10%; height: 100%;back:red">
       <div class="btn-group">
           <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Domain
@@ -23,58 +24,68 @@
           <div class="dropdown-menu">
               {%for domain in domains%}
               
-              <input type="radio" name="domain" value ={{domain.domain}} >{{domain.domain}}<br/>
+              <input type="radio" name="domain" value ="{{domain.domain}}" >{{domain.domain}}<br/>
               
               {%endfor%}
             
           </div>
         </div>
+          </div>
+          <!-- <div class = "col-sm" style = "top:10%; height: 100%;back:red">
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Subject
             </button>
             <div class="dropdown-menu">
                 {%for subject in subjects%}
-                <input type="radio" name="subject" value = {{subject.subject}}>{{subject.subject}}<br/>
+                <input type="radio" name="subject" value = "{{subject.subject}}">{{subject.subject}}<br/>
                 
                 {%endfor%}
               
             </div>
           </div>
+          </div> -->
+          <div class = "col-sm" style = "top:10%; height: 100%;back:red">
           <div class="btn-group">
               <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sem
               </button>
               <div class="dropdown-menu">
                   {%for sem in sems%}
-                  <input type="radio" name="sem" value ={{sem.sem}} >{{sem.sem}}<br/>
+                  <input type="radio" name="sem" value ="{{sem.sem}}" >{{sem.sem}}<br/>
                   
                   {%endfor%}
               </div>
             </div>
+            </div>
+ 
+<div class = "col-sm" style = "top:10%; height: 100%;back:red">
+<button type="submit" class="btn btn-primary" >Submit</button></div>
+</div>
+</form>
+<br/>
+<br/>
+
+
+<div class="row" style = "justify-content: center;">
  
 
-<button type="submit" class="btn btn-primary" style="margin-top:20px;">Submit</button><br><br>
-</form>
-</div>
 
 
-<div class = "col-md-8">
-<div class="row">
     {%for project in projects%}
-    <a href="/projects/{{project.id}}">
+    <a href="/projects/{{project.id}}" style = "text-decoration: none;color:black">
             
-            <div class="col-sm-6">
-            <div class="card" style="width: 18rem; height: 20rem;">
-              <img style ="width:100%;height:80%;" class = "card-img-top" src = {{project.project_pic.url}} src = ""> 
+            <div class="col-sm-4" style = "margin-bottom: 2rem;">
+            <div class="card" style="width: 18rem;height: 20rem;">
+              <img style ="width:100%;height:70%" class = 'card-image-top' src = {{project.project_pic.url}} src = ""> 
             <div class="card-body">
                    
-              <h4 class="card-title"style="text-align: center;">{{project.pname}}</h4>
+              <h5 class="card-title"style="text-align: center;">{{project.pname}}</h>
           
             </div>
           </div></div></a>
-{%endfor%}</div>
-</div>
+{%endfor%}
+
 </div>
 
 {%endblock%}
