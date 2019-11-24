@@ -77,7 +77,7 @@
                 <select class="form-control" name = "teacher" required>
                   <option selected disabled>Select Teacher</option> 
                   {% for teacher in teachers %}
-                  <option value = {{teacher}} >{{teacher.tname}}-{{teacher.dept}}</option>
+                  <option value = {{teacher.id}} >{{teacher.tname}}-{{teacher.dept}}</option>
                   {%endfor%}
                   
                  

@@ -59,6 +59,7 @@ def submit(request):
 	if request.method == 'POST':
 		usn = request.POST.get('usn',None).upper()
 		teacher_id = request.POST.get('teacher', None)
+		print(teacher_id,'///')
 		pname = request.POST.get('pname', None)
 		domain = request.POST.get('domain', None)
 		summary = request.POST.get('summary', None)
@@ -79,7 +80,7 @@ def submit(request):
 
 
 		
-		project = Project(student_id = student,pname=pname,domain = domain,summary = summary,subject = subject,branch = branch,pfile = pfile,sem = sem,project_pic = project_pic, types = types )
+		project = Project(student_id = student,pname=pname,domain = domain,summary = summary,subject = subject,branch = branch,pfile = pfile,sem = sem,project_pic = project_pic, types = types ,teacher_id = Teacher.objects.get(id = teacher_id))
 		project.save()
 		
 
@@ -103,7 +104,8 @@ def update(request,project_id):
 		if project is not None:
 			project.projet_pic = pic
 
-		project.types = request.POST.get('types', None)	
+		project.types = request.POST.get('types', None)
+		project. status = 'U'	
 		project.save()
 
 	

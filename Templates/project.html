@@ -1,24 +1,38 @@
 {%extends 'base.html'%}
 {%block main%}
-  
-    <img src="" alt={{project.pname}} />
-    <h3>{{project.pname}}</h3>
-    <p>{{project.domain}}</p>
+  <div class = "container">
+        <h3 style = "text-align: center;margin: 2rem;">{{project.pname}}</h3>
+    <img src= {{project.project_pic.url}} alt={{project.pname}} style = "width:90%;margin:1rem 5% ;height: 400px;" />
+   <div style = "display: grid;grid-template-columns: 1fr 1fr 1fr 1fr; margin: 1rem 3.5rem;">
+    <p><strong>Domain: </strong>{{project.domain}}</p>
+    <p><strong>branch: </strong>{{project.branch}}</p>
+    <p><strong>subject: </strong>{{project.subject}}</p>
+    <p><strong>Presented By: </strong>{{project.student_id.sname}}</p>
+    <a href = {{project.pfile.url}} target = "_blank"><strong>Click to open Report </strong></a>
+    
+    </div>
+    <div style =" margin: 1rem 3.5rem;">
     <p>{{project.summary}}</p>
-    <p>{{project.subject}}</p>
-    <p>{{project.student_id.sname}}</p>
-    <p>{{project.branch}}</p>
+    </div>
+   
+
+    
     {% if project.best_project == 'Y' %}
     <p>This is the best project of the department</p>
     {% else %}
     <span></span>
 
     {%endif%}
-    <!-- {% if project.likes !=null%}
-<p>Likes : {{project.likes}}</p> -->
-<!-- {%endif%} -->
-    <p>Comments</p>
+   
+    <strong style =" margin: 1rem 3.5rem;">Comments</strong>
     {% for comment in comments%}
-    <p>{{comment.comment}}</p>
+    <div class="card" style =" margin: 1rem 5%; width:90%;" >
+
+    <div class="card-body">{{comment.comment}}</div>
+    </div>
+
+    
+
+
     {%endfor%}
 {%endblock%}
