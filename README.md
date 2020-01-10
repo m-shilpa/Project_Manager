@@ -12,8 +12,8 @@ This helps the other students get inspired by student projects and build new pro
 The flow of the project as follows
 <b>Home Page</b>
 
-<img src="./ReadmeImages/homepage.png" alt="Home Page" width="400" height="400"/>
-<img src="./ReadmeImages/projectList1.jpeg" alt="ProjectsList Page" width="400" height="400"/>
+<img  src="./ReadmeImages/homepage.png"  alt="Home Page" width="400" height="300" align="left"/>
+<img src="./ReadmeImages/projectList1.jpeg" alt="ProjectsList Page" width="400" height="300" align="right"/>
 <br/>
 
 
