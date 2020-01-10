@@ -4,19 +4,30 @@ This helps the other students get inspired by student projects and build new pro
 
 The flow of the project as follows
 <b>Home Page</b>
-![Home Page](/ReadmeImages/homepage.png)
+
+<img src="./ReadmeImages/homepage.png" alt="Home Page" width="460" height="280"/>
 <br/>
 
 **Projects List**
-![ProjectsList Page](/ReadmeImages/Projectslist.png)
+
+<img src="./ReadmeImages/projectsList1.jpeg" alt="ProjectsList Page" width="460" height="280"/>
 <br/>
 
 **Individual Project**
-![Individual Projects Page](/ReadmeImages/Individual Project.png)
+
+<img src="./ReadmeImages/Individual Project.png" alt="Individual Projects Page" width="460" height="280"/>
 <br/>
 
 **Student Dashboard **
-![Dtudent Dashboard Page](/ReadmeImages/student-dashboard.png)
+
+<img src="./ReadmeImages/student-dashboard.png" alt="Dtudent Dashboard Page" width="460" height="280"/>
 <br/>
 
 
+**List of Project reports/synopsis submitted to Teacher**
+
+<img src="./ReadmeImages/teacher list.PNG" alt="Teacher's View of projects list" width="460" height="280"/>
+
+**Individual Project for teacher's viewing**
+
+<img src="./ReadmeImages/teacher view.PNG" alt="Teacher's View of an individual project" width="460" height="280"/>
