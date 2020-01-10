@@ -42,6 +42,7 @@ The flow of the project as follows<br/>
 <img src="./ReadmeImages/teacher list.PNG" alt="Teacher's View of projects list" align="center"/>
 </p>
 <br/>
+
 **Individual Project for teacher's viewing**
 <p align="center">
 <img src="./ReadmeImages/teacher view.PNG" alt="Teacher's View of an individual project" width="300" height="300" />
