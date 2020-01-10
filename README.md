@@ -23,18 +23,18 @@ The flow of the project as follows
 
 **Individual Project**
 
-<img src="./ReadmeImages/Individual Project.png" alt="Individual Projects Page" width="300" height="300"align="center"/>
+<img src="./ReadmeImages/Individual Project.png" alt="Individual Projects Page" width="300" height="300" align="center"/>
 <br/>
 
 **Student Dashboard**
 
-<img src="./ReadmeImages/student-dashboard.png" alt="Dtudent Dashboard Page" width="300" height="300"" align="center"/>
+<img src="./ReadmeImages/student-dashboard.png" alt="Dtudent Dashboard Page" width="300" height="300" align="center"/>
 <br/>
 
 
 **List of Project reports/synopsis submitted to Teacher**
 
-<img src="./ReadmeImages/teacher list.PNG" alt="Teacher's View of projects list" width="300" height="300" align="center"/>
+<img src="./ReadmeImages/teacher list.PNG" alt="Teacher's View of projects list" width="400" height="400" align="center"/>
 
 **Individual Project for teacher's viewing**
 
