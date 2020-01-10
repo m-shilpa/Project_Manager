@@ -9,33 +9,39 @@ This helps the other students get inspired by student projects and build new pro
 * HTML,CSS,Bootstrap 4
 
 
-The flow of the project as follows
+The flow of the project as follows<br/>
+
 <b>Home Page</b>
-
+<p align="center">
 <img  src="./ReadmeImages/homepage.png"  alt="Home Page" width="300" height="300" align="center"/>
-
+</p>
 <br/>
 
 
 **Projects List**
-
+<p align="center">
 <img src="./ReadmeImages/projectList1.jpeg" alt="ProjectsList Page" width="300" height="300" align="center"/>
+</p>
+<br/>
 
 **Individual Project**
-
+<p align="center">
 <img src="./ReadmeImages/Individual Project.png" alt="Individual Projects Page" width="300" height="300" align="center"/>
+</p>
 <br/>
 
 **Student Dashboard**
-
+<p align="center">
 <img src="./ReadmeImages/student-dashboard.png" alt="Dtudent Dashboard Page" width="300" height="300" align="center"/>
+</p>
 <br/>
 
 
 **List of Project reports/synopsis submitted to Teacher**
-
-<img src="./ReadmeImages/teacher list.PNG" alt="Teacher's View of projects list" width="400" height="400" align="center"/>
-
+<p align="center">
+<img src="./ReadmeImages/teacher list.PNG" alt="Teacher's View of projects list" width="500" height="500" align="center"/>
+</p>
+<br/>
 **Individual Project for teacher's viewing**
 <p align="center">
 <img src="./ReadmeImages/teacher view.PNG" alt="Teacher's View of an individual project" width="300" height="300" />
