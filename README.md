@@ -37,9 +37,9 @@ The flow of the project as follows<br/>
 <br/>
 
 
-**List of Project reports/synopsis submitted to Teacher**
+**Teacher Dashboard**
 <p align="center">
-<img src="./ReadmeImages/teacher list.PNG" alt="Teacher's View of projects list" width="500" height="500" align="center"/>
+<img src="./ReadmeImages/teacher list.PNG" alt="Teacher's View of projects list" align="center"/>
 </p>
 <br/>
 **Individual Project for teacher's viewing**
